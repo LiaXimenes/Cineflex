@@ -7,12 +7,165 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-    <title>React App</title>
+
+    <title>Cineflex</title>
   </head>
   <body>
     <div class="root">
-      
+      <div class= "top">
+        <p>CINEFLEX</p>
+      </div>
+<!--primeira parte-->
+      <div class="content">
+        <div class="title"><p>Selecione um filme</p></div>
+
+        <ul class="boxes">
+          <li class="box" > 
+            <img src="posterbacurau.jpeg" />
+          </li>
+          <li class="box">
+            <img src="posterbacurau.jpeg" />
+          </li>
+          <li class="box" > 
+            <img src="posterbacurau.jpeg" />
+          </li>
+          <li class="box">
+            <img src="posterbacurau.jpeg" />
+          </li>
+        </ul>
+      </div>
+<!--segunda parte-->
+      <div class="content">
+        <div class="title"><p>Selecione O Horário</p></div>
+
+        <ul class="sessions">
+          <p>Quinta-Feira - 26/05/2022</p>
+          <li class="session">19:00</li>
+          <li class="session">21:21</li>
+
+          <p>Sexta-Feira - 27/05/2022</p>
+          <li class="session">18:00</li>
+          <li class="session">20:50</li>
+
+          <p>Sábado - 28/05/2022</p>
+          <li class="session">15:00</li>
+          <li class="session">19:00</li>
+          <li class="session">23:00</li>
+        </ul>
+
+        <div class="chosen-movie">
+          <div class="chosen-movie-img"><img src="posterbacurau.jpeg" /></div>          
+          <p>Bacurau</p>
+        </div>
+      </div>
+<!--terceira parte-->
+      <div class="content">
+        <div class="title"><p>Selecione o(s) assento(s)</p></div>
+        
+        <ul class="seats">
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+          <li class="little-balls">01</li>
+        </ul>
+
+
+        <div class="example">
+          <div>
+            <li class="little-balls green"></li>
+            <p>Selecionado</p>
+          </div>
+          <div>
+            <li class="little-balls"></li>
+            <p>Disponível</p>
+          </div>   <div>
+            <li class="little-balls yellow"></li>
+            <p>Indisponível</p>
+          </div>
+        </div>
+
+        <div class="inputs">
+          <p>Nome do Comprador:</p>
+          <input type="text" placeholder="Digite seu nome...">
+
+
+          <p>CPF do Comprador:</p>
+          <input type="text" placeholder="Digite seu CPF...">
+        </div>
+
+        <button class="button-style">Reservar assento(s)</button>
+
+        <div class="chosen-movie">
+          <div class="chosen-movie-img"><img src="posterbacurau.jpeg" /></div>          
+          <p>Bacurau<br/>Quinta-Feira - 21:21</p>
+        </div>     
+      </div>
+<!--quarta parte-->  
+      <div>
+        <p class="sucessfull-order">Pedido feito <br/>com sucesso!</p>
+      </div>
+
+      <div class="final-info">
+        <p><strong>Filme e Sessão</strong></p>
+        <ul>
+          <li>Bacurau</li>
+          <li>26/05/2022</li>
+        </ul>
+      </div>
+
+      <div class="final-info">
+        <p><strong>Ingressos</strong></p>
+        <ul>
+          <li>Assento 25</li>
+          <li>Assento 26</li>
+        </ul>
+      </div>
+
+      <div class="final-info">
+        <p><strong>Comprador</strong></p>
+        <ul>
+          <li>Nome: Lia Ximenes</li>
+          <li>CPF: 257.000.000</li>
+        </ul>
+      </div>
+
+      <button class="button-style">Voltar para Home</button>
+
     </div>
   </body>
 </html>
