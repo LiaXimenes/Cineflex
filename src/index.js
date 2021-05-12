@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
 
 import Movies from "./Movies";
-import Sessions from "./Movies";
-import Seats from "./Movies";
+import Sessions from "./Sessions";
+import Seats from "./Seats";
 import Order from "./Order";
 
 
@@ -13,6 +13,7 @@ function App(){
             <div class= "top">
                 <p>CINEFLEX</p>
             </div>
+
             <Movies />
             <Sessions />
             <Seats />

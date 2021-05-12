@@ -1,7 +1,7 @@
 export default function Seats(){
     return(
         <div class="content">
-            <div class="title"><p>Selecione o(s) assento(s)</p></div>
+            <div class="section"><p>Selecione o(s) assento(s)</p></div>
             
             <ul class="seats">
                 <li class="little-balls">01</li>

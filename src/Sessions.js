@@ -1,7 +1,7 @@
 export default function Sessions(){
     return(
         <div class="content">
-            <div class="title"><p>Selecione O Horário</p></div>
+            <div class="section"><p>Selecione O Horário</p></div>
 
             <ul class="sessions">
                 <p>Quinta-Feira - 26/05/2022</p>

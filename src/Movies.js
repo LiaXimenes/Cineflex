@@ -1,34 +1,24 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
 export default function Movies(){
-   // const [movie, setMovie] = useState([]);
+    const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         const request = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies");
-    promisse.then((answer) => console.log(answer.data))
+        request.then((answer) => {setMovies(answer.data)});
     }, []);
 
-    //answer => {setMovie(resposta.data)}
-
-
     return(
-        <div class="content">
-            <div class="title"><p>Selecione um filme</p></div>
+        <div className="content">
+            <div className="section"><p>Selecione um filme</p></div>
 
-            <ul class="boxes">
-                <li class="box" > 
-                    <img src="posterbacurau.jpeg" />
-                </li>
-                <li class="box">
-                    <img src="posterbacurau.jpeg" />
-                </li>
-                <li class="box" > 
-                    <img src="posterbacurau.jpeg" />
-                </li>
-                <li class="box">
-                    <img src="posterbacurau.jpeg" />
-                </li>
+            <ul className="boxes">
+                {movies.map(movie =>(
+                    <li className="box" key={movie.id} alt= ""> 
+                        <img src={movie.posterURL} />
+                     </li>
+                ))}
             </ul>
         </div>
     )
