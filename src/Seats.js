@@ -1,63 +1,46 @@
+import { useState, useEffect } from "react";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
+
 export default function Seats(){
+    const [infos, setInfos] = useState([]);
+    const {idAssento} = useParams();
+
+    useEffect(() => {
+        const request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idAssento}/seats`)
+        request.then((answer) => {setInfos(answer.data)});
+    }, [])
+    
+
     return(
-        <div class="content">
-            <div class="section"><p>Selecione o(s) assento(s)</p></div>
+        <div className="content">
+            <div className="section"><p>Selecione o(s) assento(s)</p></div>
             
-            <ul class="seats">
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
-                <li class="little-balls">01</li>
+            <ul className="seats">
+
+                {infos.map(info => {
+                    <li className="little-balls"  key={info.seats.id}>{info.seats.name}</li>
+                })}
+                
             </ul>
 
+            <div className="example">
+                <div>
+                    <li className="little-balls green"></li>
+                    <p>Selecionado</p>
+                </div>
+                <div>
+                    <li className="little-balls"></li>
+                    <p>Disponível</p>
+                </div>   <div>
+                    <li className="little-balls yellow"></li>
+                    <p>Indisponível</p>
+                </div>
+            </div>
 
-            <div class="example">
-            <div>
-                <li class="little-balls green"></li>
-                <p>Selecionado</p>
-            </div>
-            <div>
-                <li class="little-balls"></li>
-                <p>Disponível</p>
-            </div>   <div>
-                <li class="little-balls yellow"></li>
-                <p>Indisponível</p>
-            </div>
-            </div>
-
-            <div class="inputs">
+            <div className="inputs">
                 <p>Nome do Comprador:</p>
                 <input type="text" placeholder="Digite seu nome..." />
 
@@ -66,11 +49,13 @@ export default function Seats(){
                 <input type="text" placeholder="Digite seu CPF..." />
             </div>
 
-            <button class="button-style">Reservar assento(s)</button>
-
-            <div class="chosen-movie">
-                <div class="chosen-movie-img"><img src="posterbacurau.jpeg" /></div>          
-                <p>Bacurau<br/>Quinta-Feira - 21:21</p>
+            <Link to="/Order">
+                <button className="button-style">Reservar assento(s)</button>
+            </Link>
+            
+            <div className="chosen-movie" key={infos.id}>
+                <div className="chosen-movie-img"><img src={infos.movie.posterURl} alt=" " /></div>          
+                <p>{infos.movie.title}<br/>{infos.day.weekday} - {infos.name}</p>
             </div>     
         </div>
     )

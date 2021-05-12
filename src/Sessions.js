@@ -1,27 +1,39 @@
+import { useState, useEffect } from "react";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 export default function Sessions(){
+    const [infos, setInfos] = useState([]);
+    const {idSessao} = useParams();
+
+    useEffect(() => {
+        const request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies/${idSessao}/showtimes`)
+        request.then((answer) => {setInfos(answer.data)});
+    }, [])
+
+    
     return(
-        <div class="content">
-            <div class="section"><p>Selecione O Horário</p></div>
+        <div className="content">
+            <div className="section"><p>Selecione o Horário</p></div>
 
-            <ul class="sessions">
-                <p>Quinta-Feira - 26/05/2022</p>
-                <li class="session">19:00</li>
-                <li class="session">21:21</li>
+            {infos.map(info => (
+                <>
+                    <ul className="sessions">
+                        <p>{info.days.weekday} - {info.days.date} key={info.days.id}</p>
+                        <Link to="/Order">
+                            <li className="session" key={info.days.showtime.id}>{info.days.showtime.name}</li>
+                        </Link>
+                    </ul>
 
-                <p>Sexta-Feira - 27/05/2022</p>
-                <li class="session">18:00</li>
-                <li class="session">20:50</li>
+                    <div className="chosen-movie">
+                        <div className="chosen-movie-img"><img src={info.posterURL} alt=""/></div>          
+                        <p>{info.title} key={info.id}</p>
+                    </div>
+                </>
 
-                <p>Sábado - 28/05/2022</p>
-                <li class="session">15:00</li>
-                <li class="session">19:00</li>
-                <li class="session">23:00</li>
-            </ul>
+            ))}
 
-            <div class="chosen-movie">
-                <div class="chosen-movie-img"><img src="posterbacurau.jpeg" /></div>          
-                <p>Bacurau</p>
-            </div>
         </div>
     )
 }

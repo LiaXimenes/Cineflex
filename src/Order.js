@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 export default function Order(){
     return(
         <>
             <div>
-                <p class="sucessfull-order">Pedido feito <br/>com sucesso!</p>
+                <p className="sucessfull-order">Pedido feito <br/>com sucesso!</p>
             </div>
 
-            <div class="final-info">
+            <div className="final-info">
                 <p><strong>Filme e Sessão</strong></p>
                 <ul>
                 <li>Bacurau</li>
@@ -13,7 +15,7 @@ export default function Order(){
                 </ul>
             </div>
 
-            <div class="final-info">
+            <div className="final-info">
                 <p><strong>Ingressos</strong></p>
                 <ul>
                 <li>Assento 25</li>
@@ -21,7 +23,7 @@ export default function Order(){
                 </ul>
             </div>
 
-            <div class="final-info">
+            <div className="final-info">
                 <p><strong>Comprador</strong></p>
                 <ul>
                 <li>Nome: Lia Ximenes</li>
@@ -29,7 +31,10 @@ export default function Order(){
                 </ul>
             </div>
 
-            <button class="button-style">Voltar para Home</button>
+            <Link to="/">
+                <button className="button-style">Voltar para Home</button>
+            </Link>
+           
       </>
     )
 }
