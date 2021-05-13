@@ -16,7 +16,7 @@ export default function Movies(){
 
             <ul className="boxes">
                 {movies.map(movie =>(
-                    <Link to="/sessions/:idFilme">
+                    <Link to={`/sessions/${movie.id}`}>
                         <li className="box" key={movie.id} > 
                             <img src={movie.posterURL} alt=""/>
                         </li>

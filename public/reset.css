@@ -50,3 +50,7 @@ table {
 strong{
 	font-weight: bold;
 }
+
+a:link{
+	text-decoration: none;
+}

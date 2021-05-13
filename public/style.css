@@ -201,6 +201,7 @@ input{
 .sucessfull-order{
     width: 100%;
     height: 110px;
+    margin-top: 70px;
     display: flex;
     align-items: center;
     justify-content: center;

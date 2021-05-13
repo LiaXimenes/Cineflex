@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Order(){
+export default function Order({typedName, typedCPF, setTypedName, setTypedCPF}){
     return(
         <>
             <div>
@@ -26,8 +26,8 @@ export default function Order(){
             <div className="final-info">
                 <p><strong>Comprador</strong></p>
                 <ul>
-                <li>Nome: Lia Ximenes</li>
-                <li>CPF: 257.000.000</li>
+                <li>Nome: {typedName}</li>
+                <li>CPF: {typedCPF}</li>
                 </ul>
             </div>
 
