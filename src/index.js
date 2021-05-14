@@ -13,6 +13,13 @@ import Order from "./Order";
 function App(){
     const [typedName, setTypedName] = useState([]);
     const [typedCPF, setTypedCPF] = useState([]);
+    const [chosenSeat, setChosenSeat] = useState([]);
+
+    const [movieName, setMovieName] = useState("");
+    const [movieDate, setMovieDate] = useState("");
+    const [movieHour, setMovieHour] = useState("");
+
+   
 
     return(
         <>
@@ -23,15 +30,21 @@ function App(){
                     <Movies />
 				</Route>
                 <Route path="/sessions/:movieId" exact>
-                    <Sessions />
+                    <Sessions setMovieName = {setMovieName} />
 				</Route>
                 <Route path="/seats/:sessionsId" exact>
                     <Seats typedName = {typedName} setTypedName = {setTypedName}
                         typedCPF = {typedCPF} setTypedCPF = {setTypedCPF}
+                        chosenSeat = {chosenSeat} setChosenSeat = {setChosenSeat}
+                        setMovieHour = {setMovieHour} setMovieDate = {setMovieDate}
                     />
 				</Route>
                 <Route path="/Order" exact>
-                    <Order typedName = {typedName} typedCPF = {typedCPF} />
+                    <Order typedName = {typedName} setTypedName={setTypedName}
+                       typedCPF = {typedCPF} setTypedCPF={setTypedCPF}
+                       chosenSeat = {chosenSeat} setChosenSeat = {setChosenSeat}
+                       movieName = {movieName} movieDate = {movieDate} movieHour = {movieHour}
+                    />
 				</Route>
 			</Switch>
 		    </BrowserRouter>

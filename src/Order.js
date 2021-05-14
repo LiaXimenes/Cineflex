@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Order({typedName, typedCPF, setTypedName, setTypedCPF}){
+export default function Order({typedName, typedCPF, setTypedName, setTypedCPF, chosenSeat, setChosenSeat, movieName, movieDate, movieHour}){
     return(
         <>
             <div>
@@ -10,16 +10,15 @@ export default function Order({typedName, typedCPF, setTypedName, setTypedCPF}){
             <div className="final-info">
                 <p><strong>Filme e Sessão</strong></p>
                 <ul>
-                <li>Bacurau</li>
-                <li>26/05/2022</li>
+                <li>{movieName}</li>
+                <li>{movieDate} - {movieHour}</li>
                 </ul>
             </div>
 
             <div className="final-info">
                 <p><strong>Ingressos</strong></p>
                 <ul>
-                <li>Assento 25</li>
-                <li>Assento 26</li>
+                    {chosenSeat.map(seat => (<li>Assento {seat}</li>) )}
                 </ul>
             </div>
 
@@ -32,9 +31,8 @@ export default function Order({typedName, typedCPF, setTypedName, setTypedCPF}){
             </div>
 
             <Link to="/">
-                <button className="button-style">Voltar para Home</button>
+                <button className="button-style" onClick = {() => {setTypedName(""); setTypedCPF(""); setChosenSeat("")}}>Voltar para Home</button>
             </Link>
-           
       </>
     )
 }

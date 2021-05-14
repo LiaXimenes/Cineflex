@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
-export default function Seats({typedName, setTypedName, typedCPF, setTypedCPF}){
+export default function Seats({setMovieDate, setMovieHour, typedName, setTypedName, typedCPF, setTypedCPF, chosenSeat, setChosenSeat}){
     const [infos, setInfos] = useState([]);
     const {sessionsId} = useParams("sessionsId");
 
@@ -13,6 +13,13 @@ export default function Seats({typedName, setTypedName, typedCPF, setTypedCPF}){
         request.then((answer) => {setInfos(answer.data)});
     }, [])
 
+    if(infos.length === 0){
+        return <div></div>;
+    }
+    setMovieDate(infos.day.weekday);
+    setMovieHour(infos.name);
+    
+
     return(
 
         <div className="content">
@@ -20,9 +27,9 @@ export default function Seats({typedName, setTypedName, typedCPF, setTypedCPF}){
             
             <ul className="seats">
 
-               {infos.length === 0 ?"" : infos.seats.map(info => (
+               {infos.seats.map(info => (
                     <li className={`little-balls ${info.isAvailable ? "" : "yellow"}`} key={info.id}
-                     onClick={(event) => {chooseSeat(info.isAvailable,event)}}>
+                     onClick={(event) => {chooseSeat(info.isAvailable, event, info.id)}}>
                         {info.name}
                     </li>
                 ))}
@@ -62,24 +69,40 @@ export default function Seats({typedName, setTypedName, typedCPF, setTypedCPF}){
             </div>
 
             <Link to="/Order">
-                <button className="button-style">Reservar assento(s)</button>
+                <button className="button-style" onClick={sendToServer}>Reservar assento(s)</button>
             </Link>
             
-            {infos.length === 0 ?"" :
-                <div className="chosen-movie" key={infos.id}>
-                    <div className="chosen-movie-img">
-                        <img src={infos.movie.posterURL} alt=" " />
-                    </div>          
-                    <p>{infos.movie.title}<br/>{infos.day.weekday} - {infos.name}</p>
-                </div> 
-            }
+            
+            <div className="chosen-movie" key={infos.id}>
+                <div className="chosen-movie-img">
+                    <img src={infos.movie.posterURL} alt=" " />
+                </div>          
+                <p>{infos.movie.title}<br/>{infos.day.weekday} - {infos.name}</p>
+            </div> 
+            
                 
         </div>
     )
 
-    function chooseSeat(isAvailable,event){
+    function chooseSeat(isAvailable,event,id){
         if(!isAvailable){
             alert("assento indisponível");
-        }else {event.target.classList.toggle("green")}
+        }else {event.target.classList.toggle("green");
+                setChosenSeat([... chosenSeat, id]);
+            }
     }
+
+
+
+    function sendToServer(){
+        const infosToServer = 
+        {
+            ids: chosenSeat,
+            name: typedName,
+            cpf: typedCPF,
+        }
+        axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many", infosToServer);
+     
+    }
+     
 }

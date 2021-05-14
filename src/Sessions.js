@@ -3,9 +3,11 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
-export default function Sessions(){
+export default function Sessions({setMovieName}){
     const [infos, setInfos] = useState([]);
     const {movieId} = useParams("movieId");
+
+        
 
     useEffect(() => {
         const request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies/${movieId}/showtimes`)
@@ -14,6 +16,7 @@ export default function Sessions(){
 
     const {days = []} = infos;  
 
+    setMovieName(infos.title);
 
     return(
         <div className="content">
@@ -21,7 +24,7 @@ export default function Sessions(){
 
             {days.map(info => (
                 
-                <ul className="sessions">
+                <ul className="sessions" key={info.id}>
                     <p>{info.weekday} - {info.date}</p>
 
                     {info.showtimes.map(sessions => ( 
@@ -33,7 +36,7 @@ export default function Sessions(){
                 
             ))}
 
-            <div className="chosen-movie">
+            <div className="chosen-movie" key = {infos.id}>
                 <div className="chosen-movie-img"><img src={infos.posterURL} alt=""/></div>          
                     <p>{infos.title}</p>
                 </div>
