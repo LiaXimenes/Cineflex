@@ -87,9 +87,18 @@ export default function Seats({setMovieDate, setMovieHour, typedName, setTypedNa
     function chooseSeat(isAvailable,event,id){
         if(!isAvailable){
             alert("assento indisponível");
-        }else {event.target.classList.toggle("green");
-                setChosenSeat([... chosenSeat, id]);
+        } else {
+            if(event.target.classList.contains("green")){
+                event.target.classList.remove("green");
+                
+                const filterSeat = chosenSeat.filter((seatId) => seatId !== id);
+                setChosenSeat([... filterSeat]);
+
+            } else{event.target.classList.add("green")
+                    setChosenSeat([... chosenSeat, id]);
             }
+
+        }
     }
 
 

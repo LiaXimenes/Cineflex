@@ -1,6 +1,5 @@
 body{
     font-family: 'Roboto', sans-serif;
-
 }
 
 .top{
@@ -13,12 +12,18 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url("cinema-chairs.jpg");
+    background-size: cover;
+    border-bottom: solid 4px #ffffff;
 }
 
 .top p{
     font-size: 34px;
-    color: #E8833A;
+    color: #ffffff;
     line-height: 38px;
+    text-shadow: 2px 2px 0 #000000;
+    border-bottom: dotted 5px #ffffff;
+    border-top: dotted 5px #ffffff;
 }
 
 .content{
@@ -99,7 +104,6 @@ body{
     align-items: center;
     padding-left: 20px;
     border-top: solid 1px #9EADBA;
-    
 }
 .chosen-movie-img{
     width:64px;
@@ -111,11 +115,11 @@ body{
     align-items: center;
     justify-content: center;
 }
+
 .chosen-movie-img img{
     width: 48px;
     height: 72px;
 }
-
 
 .chosen-movie p{
     font-size: 26px;
@@ -154,7 +158,6 @@ body{
     background: #8DD7CF;
     border: solid 1px #1AAE9E;
 }
-
 
 .yellow{
     background: #FBE192;
@@ -223,8 +226,4 @@ input{
 
 .final-info p{
     margin-bottom: 5px;
-
 }
-
-
-
